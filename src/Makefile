@@ -9,9 +9,9 @@ OBJS = $(SRCS:cpp=o)
 
 CXX = g++
 CXXSTD = -std=c++17
-# IDIR = -I../inc
-CXXFLAGS = -g -Wall -Werror $(CXXSTD)
-# CXXFLAGS = -g -Wall -Werror $(CXXSTD) $(IDIR)
+IDIR = -I../inc
+# CXXFLAGS = -g -Wall -Werror $(CXXSTD)
+CXXFLAGS = -g -Wall -Werror $(CXXSTD) $(IDIR)
 
 .PHONY: all
 all: $(PROG)
