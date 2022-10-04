@@ -53,6 +53,19 @@ int main() {
 	std::cerr << "\nDone." << std::endl ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Traces a color ray
+ *
+ * @Param r		- The color ray
+ *
+ * @Returns color	- Returns a color (Vec3 obj)
+ *
+ * @Notes		- 1. Calculates ray from cam eye to pixel
+ *			\2. Determines which objects the ray intersects
+ *			\3. Computes a color for that intersection point
+ */
+/* ------------------------------------------------------------------------------------*/
 static color ray_color(Ray const &r) {
 	Vec3 unit_direction = unit_vector(r.direction()) ;
 	auto t = 0.5 * (unit_direction.y() + 1.0) ;
