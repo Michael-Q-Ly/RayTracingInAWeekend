@@ -10,6 +10,7 @@
 #include "Vec3.hpp"
 #include <iostream>
 
+static bool hit_sphere(point3 const &center, double radius, Ray const &r) ;
 static color ray_color(Ray const &r) ;
 
 int main() {
@@ -28,9 +29,9 @@ int main() {
 	auto viewport_width  = aspect_ratio * viewport_height ;
 	auto focal_length    = 1.0 ;
 
-	auto origin = point3(0, 0, 0) ;
-	auto horizontal = Vec3(viewport_width, 0, 0) ;
-	auto vertical = Vec3(0, viewport_height, 0) ;
+	auto origin            = point3(0, 0, 0) ;
+	auto horizontal        = Vec3(viewport_width, 0, 0) ;
+	auto vertical          = Vec3(0, viewport_height, 0) ;
 	auto lower_left_corner = origin - (horizontal/2) - (vertical/2) - Vec3(0, 0, focal_length) ;
 	(void)lower_left_corner ;
 
@@ -55,6 +56,26 @@ int main() {
 
 /* ----------------------------------------------------------------------------*/
 /**
+ * @Brief		- Determines if a light ray hits a sphere by calculating a determinant
+ *
+ * @Param center	- Center of the sphere
+ * @Param radius	- Radius of the sphere
+ * @Param r		- Ray we test to see if it hits sphere
+ *
+ * @Returns bool	- Does the ray hit the sphere?
+ */
+/* ------------------------------------------------------------------------------------*/
+static bool hit_sphere(point3 const &center, double radius, Ray const &r) {
+	Vec3 oc           { r.origin() - center} ;				///< origin of circle
+	auto a            { dot(r.direction(), r.direction())} ;		///< <P(t) -C> dot <P(t) - C> = r^2
+	auto b            { 2.0 * dot(oc, r.direction())} ;
+	auto c            { dot(oc, oc) - radius*radius} ;
+	auto discriminant { (b*b) - (4*a*c)} ;
+	return (discriminant > 0) ;
+}
+
+/* ----------------------------------------------------------------------------*/
+/**
  * @Brief		- Traces a color ray
  *
  * @Param r		- The color ray
@@ -67,6 +88,9 @@ int main() {
  */
 /* ------------------------------------------------------------------------------------*/
 static color ray_color(Ray const &r) {
+	if (hit_sphere(point3(0,0,-1), 0.5, r)) {
+		return color(1, 0, 0) ;
+	}
 	Vec3 unit_direction = unit_vector(r.direction()) ;
 	auto t = 0.5 * (unit_direction.y() + 1.0) ;
 	return (1.0 - t) * color(1.0, 1.0, 1.0) + (t * color(0.5, 0.7, 1.0)) ;
