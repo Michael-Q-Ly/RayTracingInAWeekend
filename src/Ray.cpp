@@ -48,6 +48,15 @@ Vec3 Ray::direction(void) const {
 	return dir ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Location of vector point
+ *
+ * @Param t		- Time
+ *
+ * @Returns Ray		- Location ray is at
+ */
+/* ------------------------------------------------------------------------------------*/
 point3 Ray::at(double t) const {
 	return orig + (t * dir) ;
 }
