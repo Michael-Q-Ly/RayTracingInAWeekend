@@ -15,30 +15,30 @@
  *-----------------------------------------------------------------------------*/
 class Vec3 {
         public:
-                Vec3(void) ;
-                Vec3(double e0, double e1, double e2) ;
+                Vec3(void) ;						///< No-args Vec3 constructor
+                Vec3(double e0, double e1, double e2) ;			///< Overloaded Vec3 constructor
 
-                double x() const ;
-                double y() const ;
-                double z() const ;
+                double x() const ;					///< x-direction 
+                double y() const ;					///< y-direction
+                double z() const ;					///< z-direction
 
-                Vec3 operator-(void) const ;
-                double operator[](int i) const ;
-                double &operator[](int i) ;
+                Vec3 operator-(void) const ;				///< Overloaded Vec3 - operator
+                double operator[](int i) const ;			///< Overloaded Vec3 [] const operator
+                double &operator[](int i) ;				///< Overloaded Vec3 [] operator
 
-                Vec3 &operator+=(Vec3 const &v) ;
-                Vec3 &operator*=(double const t) ;
-                Vec3 &operator/=(double const t) ;
+                Vec3 &operator+=(Vec3 const &v) ;			///< Overloaded Vec3 += operator
+                Vec3 &operator*=(double const t) ;			///< Overloaded Vec3 *= operator
+                Vec3 &operator/=(double const t) ;			///< Overloaded Vec3 /= operator
 
-                double length(void) const ;
-                double length_squared(void) const ;
+                double length(void) const ;				///< Gets Vec3 length
+                double length_squared(void) const ;			///< Gets Vec3 squared length
         public:
-                double e[3] ;
+                double e[3] ;						///< Vec3 elements
 } ;
 
 // Type aliases for Vec3
-using point3 = Vec3 ;           // 3D point
-using color  = Vec3 ;           // RGB color
+using point3 = Vec3 ;							///< 3D point
+using color  = Vec3 ;							///< RGB color
 
 /*-----------------------------------------------------------------------------
  * Vec3 Utility Functions 
@@ -47,12 +47,12 @@ using color  = Vec3 ;           // RGB color
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline output stream with Vec3 arg
  *
- * @Param out
- * @Param v
+ * @Param out		- Reference to output stream
+ * @Param v		- Vec3 object
  *
- * @Returns 
+ * @Returns out		- The vector elements
  */
 /* ------------------------------------------------------------------------------------*/
 inline std::ostream &operator<<(std::ostream &out, Vec3 const &v) {
@@ -61,12 +61,12 @@ inline std::ostream &operator<<(std::ostream &out, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline + operator with Vec3 args
  *
- * @Param u
- * @Param v
+ * @Param u		- First vector
+ * @Param v		- Second vector
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object scaled with sum of two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator+(Vec3 const &u, Vec3 const &v) {
@@ -75,12 +75,12 @@ inline Vec3 operator+(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline - operator with Vec3 args
  *
- * @Param u
- * @Param v
+ * @Param u		- First vector
+ * @Param v		- Second vector
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object initialized with the difference of the two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator-(Vec3 const &u, Vec3 const &v) {
@@ -89,12 +89,12 @@ inline Vec3 operator-(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline * operator with two Vec3 args
  *
- * @Param u
- * @Param v
+ * @Param u		- The unit vector
+ * @Param v		- The vector
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object initialized with product of each element
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator*(Vec3 const &u, Vec3 const &v) {
@@ -103,12 +103,12 @@ inline Vec3 operator*(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline * operator with one double and one Vec3 arg
  *
- * @Param t
- * @Param v
+ * @Param t		- Time
+ * @Param v		- The vector
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object with scaled vector elements
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator*(double t, Vec3 const &v) {
@@ -117,12 +117,12 @@ inline Vec3 operator*(double t, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline * operator with one Vec3 arg and one double 
  *
- * @Param v
- * @Param t
+ * @Param v		- The vector
+ * @Param t		- Time
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object initialized with t scaling factor
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator*(Vec3 const &v, double t) {
@@ -131,12 +131,12 @@ inline Vec3 operator*(Vec3 const &v, double t) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded inline / operator with one Vec3 arg and one double 
  *
- * @Param v
- * @Param t
+ * @Param v		- The vector
+ * @Param t		- Time
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object scaled by 1/t
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator/(Vec3 v, double t) {
@@ -145,12 +145,12 @@ inline Vec3 operator/(Vec3 v, double t) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Dot product of two Vec3 objects
  *
- * @Param u
- * @Param v
+ * @Param u		- First vector
+ * @Param v		- Second vector
  *
- * @Returns 
+ * @Returns Vec3	- The dot product of the two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline double dot(Vec3 const &u, Vec3 const &v) {
@@ -163,12 +163,12 @@ inline double dot(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Cross product of two Vec3 objects
  *
- * @Param u
- * @Param v
+ * @Param u		- First vector
+ * @Param v		- Second vector
  *
- * @Returns 
+ * @Returns		- The cross product of the two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 cross(Vec3 const &u, Vec3 const &v) {
@@ -182,11 +182,11 @@ inline Vec3 cross(Vec3 const &u, Vec3 const &v) {
 }
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets unit vector of Vec3 object
  *
- * @Param v
+ * @Param v		- The vector
  *
- * @Returns 
+ * @Returns		- The unit vector of the Vec3 object
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 unit_vector(Vec3 v) {

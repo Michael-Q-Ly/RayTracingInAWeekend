@@ -9,7 +9,7 @@
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		Vec3 constructor initializing all to zero
+ * @Brief		- Vec3 constructor initializing all to zero
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3::Vec3(void)
@@ -18,11 +18,11 @@ Vec3::Vec3(void)
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		Overloaded Vec3 constructor expecting 3 doubles
+ * @Brief		- Overloaded Vec3 constructor expecting 3 doubles
  *
- * @Param e0
- * @Param e1
- * @Param e2
+ * @Param e0		- 1st element
+ * @Param e1		- 2nd element
+ * @Param e2		- 3rd element
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3::Vec3(double e0, double e1, double e2)
@@ -31,42 +31,42 @@ Vec3::Vec3(double e0, double e1, double e2)
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets x position
  *
- * @Returns 
+ * @Returns Vec3	- x coordinate / 1st element
  */
 /* ------------------------------------------------------------------------------------*/
-double Vec3::x() const {
+double Vec3::x(void) const {
         return e[0] ;
 }
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets y position
  *
- * @Returns 
+ * @Returns double	- y coordinate / 2nd element
  */
 /* ------------------------------------------------------------------------------------*/
-double Vec3::y() const {
+double Vec3::y(void) const {
         return e[1] ;
 }
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets z position
  *
- * @Returns 
+ * @Returns double	- z coordinate / 3rd element
  */
 /* ------------------------------------------------------------------------------------*/
-double Vec3::z() const {
+double Vec3::z(void) const {
         return e[2] ;
 }
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Makes all vector elements negative
  *
- * @Returns 
+ * @Returns Vec3	- Vec3 object with negative elements
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3 Vec3::operator-(void) const {
@@ -75,11 +75,11 @@ Vec3 Vec3::operator-(void) const {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets Vec3 object array element
  *
- * @Param i
+ * @Param i		- Element index
  *
- * @Returns 
+ * @Returns double	- Array element
  */
 /* ------------------------------------------------------------------------------------*/
 double Vec3::operator[](int i) const {
@@ -88,11 +88,11 @@ double Vec3::operator[](int i) const {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets Vec3 object array element
  *
- * @Param i
+ * @Param i		- Element index
  *
- * @Returns 
+ * @Returns double	- Array element
  */
 /* ------------------------------------------------------------------------------------*/
 double &Vec3::operator[](int i) {
@@ -101,11 +101,11 @@ double &Vec3::operator[](int i) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded Vec3 += operator; does 1:1 addition on elements
  *
- * @Param v
+ * @Param v		- The vector whose elements we are adding to the Vec3 obj
  *
- * @Returns 
+ * @Returns double	- Vec3 array summed with the referenced vector
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3 &Vec3::operator+=(Vec3 const &v) {
@@ -117,11 +117,11 @@ Vec3 &Vec3::operator+=(Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded Vec3 *= operator; does 1:1 scalar multiplication on elements
  *
- * @Param t
+ * @Param t		- Time
  *
- * @Returns 
+ * @Returns Vec3	- Scaled Vec3 elements (multiplcation)
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3 &Vec3::operator*=(double const t) {
@@ -133,11 +133,11 @@ Vec3 &Vec3::operator*=(double const t) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Overloaded /= operator; does 1:1 scalar multiplcation on elements (int division)
  *
- * @Param t
+ * @Param t		- Time
  *
- * @Returns 
+ * @Returns Vec3	- Scaled Vec3 elements (int division)
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3 &Vec3::operator/=(double const t) {
@@ -146,9 +146,9 @@ Vec3 &Vec3::operator/=(double const t) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets Ray object length
  *
- * @Returns 
+ * @Returns double	- Ray length
  */
 /* ------------------------------------------------------------------------------------*/
 double Vec3::length(void) const {
@@ -157,9 +157,9 @@ double Vec3::length(void) const {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief 
+ * @Brief		- Gets Squared Ray object length
  *
- * @Returns 
+ * @Returns double	- Squared Ray length
  */
 /* ------------------------------------------------------------------------------------*/
 double Vec3::length_squared(void) const {
