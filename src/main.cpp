@@ -7,7 +7,6 @@
  */
 #include "color.hpp"
 #include "Vec3.hpp"
-#include "Vec3_Utility.hpp"
 #include <iostream>
 
 int main() {

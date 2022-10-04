@@ -10,6 +10,9 @@
 #include <cmath>
 #include <iostream>
 
+/*-----------------------------------------------------------------------------
+ * Vec3 Class 
+ *-----------------------------------------------------------------------------*/
 class Vec3 {
         public:
                 Vec3(void) ;
@@ -36,5 +39,20 @@ class Vec3 {
 // Type aliases for Vec3
 using point3 = Vec3 ;           // 3D point
 using color  = Vec3 ;           // RGB color
+
+
+/*-----------------------------------------------------------------------------
+ * Vec3 Utility Functions 
+ *-----------------------------------------------------------------------------*/
+inline std::ostream &operator<<(std::ostream &out, Vec3 const &v) ;
+inline Vec3 operator+(Vec3 const &u, Vec3 const v) ;
+inline Vec3 operator-(Vec3 const &u, Vec3 const v) ;
+inline Vec3 operator*(Vec3 const &u, Vec3 const v) ;
+inline Vec3 operator*(double t, Vec3 const v) ;
+inline Vec3 operator*(Vec3 const &v, double t) ;
+inline Vec3 operator/(Vec3 v, double t) ;
+inline double dot(Vec3 const &u, Vec3 const &v) ;
+inline Vec3 cross(Vec3 const &u, Vec3 const &v) ;
+inline Vec3 unit_vector(Vec3 v) ;
 
 #endif /* _VEC3_HPP_ */
