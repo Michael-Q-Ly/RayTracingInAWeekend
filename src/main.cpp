@@ -40,9 +40,9 @@ int main() {
 
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
 
-	for (int j = (image_height-1); j >= 0; --j) {
+	for (int j {image_height-1}; j >= 0; --j) {
 		std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush ;
-		for (int i = 0; i < image_width; ++i) {
+		for (int i  {0}; i < image_width; ++i) {
 			auto u = double(i) / (image_width-1) ;
 			auto v = double(j) / (image_height-1) ;
 			Ray r(origin, lower_left_corner + (u*horizontal) + (v*vertical) - origin) ;
@@ -53,6 +53,19 @@ int main() {
 	std::cerr << "\nDone." << std::endl ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Traces a color ray
+ *
+ * @Param r		- The color ray
+ *
+ * @Returns color	- Returns a color (Vec3 obj)
+ *
+ * @Notes		- 1. Calculates ray from cam eye to pixel
+ *			\2. Determines which objects the ray intersects
+ *			\3. Computes a color for that intersection point
+ */
+/* ------------------------------------------------------------------------------------*/
 static color ray_color(Ray const &r) {
 	Vec3 unit_direction = unit_vector(r.direction()) ;
 	auto t = 0.5 * (unit_direction.y() + 1.0) ;
