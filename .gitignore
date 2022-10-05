@@ -1,3 +1,5 @@
+# ignore the build directory
+*src/build/
 ### CCLS ###
 *.ccls-cache
 *.cache
