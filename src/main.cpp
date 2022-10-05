@@ -55,26 +55,29 @@ int main(int argc, char *argv[]) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Determines if a light ray hits a sphere by calculating a determinant
+ * @Brief		- Determines intersection of ray to a sphere
  *
  * @Param center	- Center of the sphere
  * @Param radius	- Radius of the sphere
  * @Param r		- Ray we test to see if it hits sphere
  *
  * @Returns double	- Where does the ray hit? Inside or outside?
+ *
+ * @Notes		- Use quadratic formula variables for discriminant
+ *			\{-b +/- sqrt[(b')^2 -4ac] }/ 2a
  */
 /* ------------------------------------------------------------------------------------*/
 static double hit_sphere(point3 const &center, double radius, Ray const &r) {
 	Vec3 oc           = r.origin() - center ;				///< origin of circle
-	auto a            = dot(r.direction(), r.direction()) ;		///< <P(t) -C> dot <P(t) - C> = r^2
-	auto b            = 2.0 * dot(oc, r.direction()) ;
-	auto c            = dot(oc, oc) - radius*radius ;
-	auto discriminant = (b*b) - (4*a*c) ;
+	auto a            = dot(r.direction(), r.direction()) ;
+	auto b		  = 2.0 * dot(oc, r.direction()) ;
+	auto c            = dot(oc,oc) - radius*radius ;
+	auto discriminant = (b*b) - 4*a*c ;
 	if (discriminant < 0) {
 		return -1.0 ;
 	}
 	else {
-		return (-b - std::sqrt(discriminant) / (2.0*a)) ;
+		return ((-b - std::sqrt(discriminant)) / (2.0*a)) ;
 	}
 }
 
