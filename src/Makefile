@@ -14,8 +14,7 @@ CXXSTD     = -std=c++17
 IDIR       = -I../inc
 BUILDDIR   = build
 RELEASEDIR = $(BUILDDIR)/Release
-CXXFLAGS   = -g -Wall $(CXXSTD) $(IDIR)
-# CXXFLAGS   = -g -Wall -Werror $(CXXSTD) $(IDIR)
+CXXFLAGS   = -g -Wall -Werror $(CXXSTD) $(IDIR)
 
 .PHONY: all
 all: $(PROG)
