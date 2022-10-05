@@ -63,21 +63,22 @@ int main(int argc, char *argv[]) {
  *
  * @Returns double	- Where does the ray hit? Inside or outside?
  *
- * @Notes		- Use quadratic formula variables for discriminant
- *			\{-b +/- sqrt[(b')^2 -4ac] }/ 2a
+ * @Notes		- Use "simplified" quadratic formula (div by 2/2) for discriminant
+ *			\{-b' +/- sqrt[(b')^2 -ac] }/ a,
+ *			\where b' = b/2.0
  */
 /* ------------------------------------------------------------------------------------*/
 static double hit_sphere(point3 const &center, double radius, Ray const &r) {
 	Vec3 oc           = r.origin() - center ;				///< origin of circle
-	auto a            = dot(r.direction(), r.direction()) ;
-	auto b		  = 2.0 * dot(oc, r.direction()) ;
-	auto c            = dot(oc,oc) - radius*radius ;
-	auto discriminant = (b*b) - 4*a*c ;
+	auto a            = r.direction().length_squared() ;
+	auto half_b       = dot(oc, r.direction()) ;
+	auto c            = oc.length_squared() - (radius*radius) ;
+	auto discriminant = (half_b*half_b) - a*c ;
 	if (discriminant < 0) {
 		return -1.0 ;
 	}
 	else {
-		return ((-b - std::sqrt(discriminant)) / (2.0*a)) ;
+		return ((-half_b - std::sqrt(discriminant)) / a) ;
 	}
 }
 
