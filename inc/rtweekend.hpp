@@ -6,7 +6,7 @@
  * @date 2022-10-05
  */
 #ifndef _RTWEEKEND_HPP_
-#define _HITTABLE_HPP_
+#define _RTWEEKEND_HPP_
 #include <cmath>
 #include <limits>
 #include <memory>
@@ -43,4 +43,4 @@ inline double degrees_to_radiuans(double degrees) {
 #include "Ray.hpp"
 #include "Vec3.hpp"
 
-#endif /*  _RTWEEKEND_HPP_ */
+#endif /* _RTWEEKEND_HPP_ */

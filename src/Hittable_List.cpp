@@ -43,6 +43,7 @@ void Hittable_List::add(std::shared_ptr<Hittable> object) {
  * @Returns bool		- Did object records hit anything?
  *
  * @Notes			- Steps through each object so that we use recursion and eventually unroll
+ *				- hit_record is a struct
  */
 /* ------------------------------------------------------------------------------------*/
 bool Hittable_List::hit(Ray const &r, double t_min, double t_max, hit_record &rec) const {

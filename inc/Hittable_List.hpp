@@ -8,6 +8,7 @@
 #ifndef _HITTABLE_LIST_HPP_
 #define _HITTABLE_LIST_HPP_
 #include "Hittable.hpp"
+
 #include <memory>
 #include <vector>
 

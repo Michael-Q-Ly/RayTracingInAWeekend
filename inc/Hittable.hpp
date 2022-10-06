@@ -38,4 +38,4 @@ class Hittable {
 		virtual ~Hittable(void) ;
 } ;
 
-#endif /*  _HITTABLE_HPP_ */
+#endif /* _HITTABLE_HPP_ */
