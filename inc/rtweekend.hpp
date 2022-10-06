@@ -7,9 +7,14 @@
  */
 #ifndef _RTWEEKEND_HPP_
 #define _RTWEEKEND_HPP_
+
+#define CSTDLIB
+
 #include <cmath>
+#include <cstdlib>
 #include <limits>
 #include <memory>
+#include <random>
 
 /*-----------------------------------------------------------------------------
  * Constants 
@@ -51,6 +56,20 @@ inline double clamp(double x, double min, double max) {
 	return x ;
 }
 
+#ifdef CSTDLIB
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- No-args randome double generator from cstdlib
+ *
+ * @Returns 
+ */
+/* ------------------------------------------------------------------------------------*/
+inline double random_double(void) {
+	static std::uniform_real_distribution<double> distribution(0.0, 1.0) ;
+	static std::mt19937 generator ;
+	return distribution(generator) ;
+}
+#else
 /* ----------------------------------------------------------------------------*/
 /**
  * @Brief		- Returns a random real in [0, 1)
@@ -58,9 +77,10 @@ inline double clamp(double x, double min, double max) {
  * @Returns double	- Random double in [0, 1)
  */
 /* ------------------------------------------------------------------------------------*/
-inline double random_double() {
+inline double random_double(void) {
 	return rand() / (RAND_MAX + 1.0) ;
 }
+#endif /* CSTDLIB */
 
 /* ----------------------------------------------------------------------------*/
 /**
