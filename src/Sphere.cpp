@@ -28,7 +28,7 @@ Sphere::Sphere(point3 cen, double r)
  * @Param t_max		- Max t val
  * @Param rec		- Hit record
  *
- * @Returns 
+ * @Returns bool	- Does the sphere get hit or not?
  */
 /* ------------------------------------------------------------------------------------*/
 bool Sphere::hit(Ray const &r, double t_min, double t_max, hit_record &rec) const {
@@ -52,9 +52,11 @@ bool Sphere::hit(Ray const &r, double t_min, double t_max, hit_record &rec) cons
 		}
 	}
 
-	rec.t      = root ;
-	rec.p      = r.at(rec.t) ;
-	rec.normal = (rec.p - center) / radius ;
+	rec.t               = root ;
+	rec.p               = r.at(rec.t) ;
+	// Set the surface side determination
+	Vec3 outward_normal = (rec.p - center) / radius ;
+	rec.set_face_normal(r, outward_normal) ;
 
 	return true ;
 }
