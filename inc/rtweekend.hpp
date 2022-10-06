@@ -51,6 +51,31 @@ inline double clamp(double x, double min, double max) {
 	return x ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Returns a random real in [0, 1)
+ *
+ * @Returns double	- Random double in [0, 1)
+ */
+/* ------------------------------------------------------------------------------------*/
+inline double random_double() {
+	return rand() / (RAND_MAX + 1.0) ;
+}
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Returns a random real in [min, max] (overloaded)
+ *
+ * @Param min		- Min number boundary
+ * @Param max		- Max number bounder
+ *
+ * @Returns double	- Scaled random number between a range
+ */
+/* ------------------------------------------------------------------------------------*/
+inline double random_double(double min, double max) {
+	return min + (max - min)*random_double() ;
+}
+
 
 
 /*-----------------------------------------------------------------------------
