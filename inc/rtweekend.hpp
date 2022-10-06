@@ -34,6 +34,23 @@ inline double degrees_to_radiuans(double degrees) {
 	return degrees * (pi/180.0) ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Clamps value x to range [min,max]
+ *
+ * @Param x		- Value to clamp
+ * @Param min		- Min val
+ * @Param max		- Max val
+ *
+ * @Returns double	- Clamped value of number passed
+ */
+/* ------------------------------------------------------------------------------------*/
+inline double clamp(double x, double min, double max) {
+	if (x < min) { return min ; }
+	if (x > max) { return max ; }
+	return x ;
+}
+
 
 
 /*-----------------------------------------------------------------------------
