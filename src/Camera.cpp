@@ -25,3 +25,17 @@ Camera::Camera(void) {
 	vertical          = Vec3(0, viewport_height, 0) ;
 	lower_left_corner = origin - (horizontal/2) - (vertical/2) - Vec3(0, 0, focal_length) ;
 }
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Gets Camera object ray
+ *
+ * @Param u		- Horizontal vector
+ * @Param v		- Vertical vector
+ *
+ * @Returns Ray		- Ray projecting out of Camera object
+ */
+/* ------------------------------------------------------------------------------------*/
+Ray Camera::get_ray(double u, double v) {
+	return Ray(origin, lower_left_corner + (u*horizontal) + (v*vertical) - origin) ;
+}
