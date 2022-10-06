@@ -30,7 +30,7 @@ double const pi       = 3.1415926535897932385 ;
  * @Returns double	- Radian equivalant of angle
  */
 /* ------------------------------------------------------------------------------------*/
-inline double degrees_to_radiuans(double degrees) {
+inline double degrees_to_radians(double degrees) {
 	return degrees * (pi/180.0) ;
 }
 
