@@ -2,7 +2,7 @@
  * @file color.hpp
  * @Brief Color Utility Functions
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.0
+ * @version 0.0.1
  * @date 2022-10-02
  */
 #ifndef _COLOR_HPP_

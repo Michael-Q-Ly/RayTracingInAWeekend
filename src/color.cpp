@@ -2,9 +2,10 @@
  * @file color.cpp
  * @Brief Color utility definitions
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.0
+ * @version 0.0.1
  * @date 2022-10-02
  */
+#include "rtweekend.hpp"
 #include "color.hpp"
 
 /* ----------------------------------------------------------------------------*/
@@ -21,6 +22,7 @@ void write_color(std::ostream &out, color pixel_color, int samples_per_pixel) {
 	auto b = pixel_color.z() ;
 
 	// Divide the color by the number of samples
+	auto scale = 1.0 / samples_per_pixel ;
 	r *= scale ;
 	g *= scale ;
 	b *= scale ;
