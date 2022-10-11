@@ -7,6 +7,7 @@
  */
 #ifndef _VEC3_HPP_
 #define _VEC3_HPP_
+#include "rtweekend.hpp"
 #include <cmath>
 #include <iostream>
 
@@ -32,6 +33,36 @@ class Vec3 {
 
                 double length(void) const ;				///< Gets Vec3 length
                 double length_squared(void) const ;			///< Gets Vec3 squared length
+
+		/*-----------------------------------------------------------------------------
+		 * Inline class functions 
+		 *-----------------------------------------------------------------------------*/
+
+		/* ----------------------------------------------------------------------------*/
+		/**
+		 * @Brief		- Create a Vec3 object with random element values
+		 *
+		 * @Returns Vec3	- Vec3 object with randomized elements
+		 */
+		/* ------------------------------------------------------------------------------------*/
+		inline static Vec3 random(void) {
+			return Vec3(random_double(), random_double(), random_double()) ;
+		}
+
+		/* ----------------------------------------------------------------------------*/
+		/**
+		 * @Brief		- Creates a Vec3 object with random elements in a range
+		 *
+		 * @Param min		- Min random number
+		 * @Param max		- Max random number
+		 *
+		 * @Returns Vec3	- Vec3 object with randomized elements clustered together in range
+		 */
+		/* ------------------------------------------------------------------------------------*/
+		inline static Vec3 random(double min, double max) {
+			return Vec3(random_double(min, max), random_double(min, max), random_double(min, max)) ;
+		}
+
         public:
                 double e[3] ;						///< Vec3 elements
 } ;
@@ -193,4 +224,21 @@ inline Vec3 unit_vector(Vec3 v) {
         return (v / v.length()) ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Rejects points outside of an external unit sphere that determines
+ *			\how light bounces off a sphere of diffuse material
+ *
+ * @Returns Vec3	- Light ray inside the unit sphere outside and tangent to actual sphere
+ */
+/* ------------------------------------------------------------------------------------*/
+inline Vec3 random_in_unit_sphere(void) {
+	while (true) {
+		auto p = Vec3::random(-1, 1) ;
+		if (p.length_squared() >= 1) {
+			continue ;
+		}
+		return p ;
+	}
+}
 #endif /* _VEC3_HPP_ */

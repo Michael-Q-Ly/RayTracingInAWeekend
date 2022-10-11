@@ -8,6 +8,7 @@
 #ifndef _CAMERA_HPP_
 #define _CAMERA_HPP_
 #include "rtweekend.hpp"
+#include "Ray.hpp"
 
 class Camera {
 	public:

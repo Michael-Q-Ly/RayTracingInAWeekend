@@ -102,7 +102,7 @@ inline double random_double(double min, double max) {
  * Common Headers 
  *-----------------------------------------------------------------------------*/
 
-#include "Ray.hpp"
-#include "Vec3.hpp"
+/* #include "Ray.hpp" */
+/* #include "Vec3.hpp" */
 
 #endif /* _RTWEEKEND_HPP_ */
