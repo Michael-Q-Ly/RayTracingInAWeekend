@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 	 * Image 
 	 *-----------------------------------------------------------------------------*/
 	auto const aspect_ratio     = 16.0 / 9.0 ;
-	int const image_width       = 400 ;
+	int const image_width       = 2560 ;
 	int const image_height      = static_cast<int>(image_width/aspect_ratio) ;
 	int const samples_per_pixel = 100 ;
 	int const max_depth         = 50 ;
@@ -77,6 +77,8 @@ int main(int argc, char *argv[]) {
  * @Notes		- 1. Calculates ray from cam eye to pixel
  *			\2. Determines which objects the ray intersects
  *			\3. Computes a color for that intersection point
+ *			\We need to ignore hits very close to zero and use 0.001
+ *			\to get ride of shadow acne problem
  */
 /* ------------------------------------------------------------------------------------*/
 static color ray_color(Ray const &r, Hittable const &world, int depth) {
@@ -87,7 +89,7 @@ static color ray_color(Ray const &r, Hittable const &world, int depth) {
 		return color(0, 0, 0)  ;
 	}
 
-	if (world.hit(r, 0, infinity, rec)) {
+	if (world.hit(r, 0.001, infinity, rec)) {
 		// Add dithering to the target
 		point3 target = rec.p + rec.normal + random_in_unit_sphere() ;
 		return 0.5 * ray_color(Ray(rec.p, target - rec.p), world, depth-1) ;
