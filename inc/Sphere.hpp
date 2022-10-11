@@ -13,15 +13,15 @@
 
 class Sphere : public Hittable {
 	public:
-		Sphere(void) = default ;
-		Sphere(point3 cen, double r) ;
+		Sphere(void) = default ;										///< No-args Sphere constructor
+		Sphere(point3 cen, double r) ;										///< Overloaded Sphere constructer to initialize center and radius
 
-		virtual bool hit(Ray const &r, double t_min, double t_max, hit_record &rec) const override ;
-		virtual ~Sphere(void) = default ;
+		virtual bool hit(Ray const &r, double t_min, double t_max, hit_record &rec) const override ;		///< Does a ray hit a shphere or not?
+		virtual ~Sphere(void) = default ;									///< Sphere destructor
 
 	public:
-		point3 center ;
-		double radius ;
+		point3 center ;												///< Center of sphere
+		double radius ;												///< Radius of sphere
 } ;
 
 #endif /* _SPHERE_HPP_ */
