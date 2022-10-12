@@ -28,6 +28,10 @@ $(OBJS): %.o:%.cpp Makefile
 
 .PHONY: build
 build:
+	bear -- make
+
+.PHONY: run
+run:
 	./$(PROG) > $(IMAGE)
 
 .PHONY: clean
