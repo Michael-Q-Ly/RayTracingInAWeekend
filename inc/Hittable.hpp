@@ -7,11 +7,22 @@ r* @file Hittable.hpp
  */
 #ifndef _HITTABLE_HPP_
 #define _HITTABLE_HPP_
+#include "rtweekend.hpp"
 #include "Ray.hpp"
 
+class Material ;						///< Material class forward declaration to let Hittable class know it exists
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- A struct containing a hit record of an object's position
+ *			\in 3D space, its surface normal, the material it is, and if
+ *			\the object's ray is front-facing or not
+ */
+/* ------------------------------------------------------------------------------------*/
 struct hit_record {
 	point3 p ;						///< hit point
 	Vec3 normal ;						///< Surface normal
+	std::shared_ptr<Material> mat_ptr ;			///< Material object shared pointer
 	double t ;						///< Time or trace
 
 	bool front_face ;					///< Is ray front-facing or not?
@@ -32,6 +43,12 @@ struct hit_record {
 	}
 } ;
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Hittable abstract class that determines if an object gets hit by a light ray
+ *			\from a diffuse light source
+ */
+/* ------------------------------------------------------------------------------------*/
 class Hittable {
 	public:
 		virtual bool hit(Ray const &r, double t_min, double t_max, hit_record &rec) const = 0 ;		///< Pure virtual

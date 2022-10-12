@@ -15,8 +15,8 @@
  * @Param r		- Radius of Sphere obj
  */
 /* ------------------------------------------------------------------------------------*/
-Sphere::Sphere(point3 cen, double r)
-	: center{cen}, radius{r} {
+Sphere::Sphere(point3 cen, double r, std::shared_ptr<Material> m)
+	: center{cen}, radius{r}, mat_ptr{m} {
 }
 
 /* ----------------------------------------------------------------------------*/
@@ -57,6 +57,7 @@ bool Sphere::hit(Ray const &r, double t_min, double t_max, hit_record &rec) cons
 	// Set the surface side determination
 	Vec3 outward_normal = (rec.p - center) / radius ;
 	rec.set_face_normal(r, outward_normal) ;
+	rec.mat_ptr = mat_ptr ;
 
 	return true ;
 }
