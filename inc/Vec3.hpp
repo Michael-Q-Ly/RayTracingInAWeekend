@@ -34,6 +34,7 @@ class Vec3 {
                 double length(void) const ;				///< Gets Vec3 length
                 double length_squared(void) const ;			///< Gets Vec3 squared length
 
+
 		/*-----------------------------------------------------------------------------
 		 * Inline class functions 
 		 *-----------------------------------------------------------------------------*/
@@ -241,4 +242,38 @@ inline Vec3 random_in_unit_sphere(void) {
 		return p ;
 	}
 }
+
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Gets unit vector of random_in_unit_sphere; drop-in replacement
+ *
+ * @Returns Vec3	- Unit vector of random_in_unit_sphere
+ */
+/* ------------------------------------------------------------------------------------*/
+inline Vec3 random_unit_vector(void) {
+	return unit_vector(random_in_unit_sphere()) ;
+}
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @Brief		- Gets random vector in hemisphere to have a uniform scatter direction
+ *			\for all angles away from the hit point, with no dependence on the angle
+ *			\from the normal
+ *
+ * @Param normal	- Surface normal of sphere
+ *
+ * @Returns Vec3	- Scatter direction from hemisphere
+ */
+/* ------------------------------------------------------------------------------------*/
+inline Vec3 random_in_hemisphere(Vec3 const &normal) {
+	Vec3 in_unit_sphere = random_in_unit_sphere() ;
+	if (dot(in_unit_sphere, normal) > 0.0) {	// In the same heiisphere as the normal
+		return in_unit_sphere ;
+	}
+	else {
+		return -in_unit_sphere ;
+	}
+}
+
 #endif /* _VEC3_HPP_ */

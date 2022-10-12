@@ -91,7 +91,7 @@ static color ray_color(Ray const &r, Hittable const &world, int depth) {
 
 	if (world.hit(r, 0.001, infinity, rec)) {
 		// Add dithering to the target
-		point3 target = rec.p + rec.normal + random_unit_vector() ;
+		point3 target = rec.p + rec.normal + random_in_hemisphere(rec.normal) ;
 		return 0.5 * ray_color(Ray(rec.p, target - rec.p), world, depth-1) ;
 	}
 
