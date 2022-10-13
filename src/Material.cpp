@@ -7,6 +7,11 @@
  */
 #include "Material.hpp"
 
+
+/*-----------------------------------------------------------------------------
+ * Lambertian 
+ *-----------------------------------------------------------------------------*/
+
 /* ----------------------------------------------------------------------------*/
 /**
  * @brief		- Initializes Lambertian object's albedo
@@ -44,4 +49,33 @@ bool Lambertian::scatter(Ray const &r_in, hit_record const &rec, color &attenuat
 	scattered = Ray(rec.p, scatter_direction) ;
 	attenuation = albedo ;
 	return true ;
+}
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------
+ * Metal 
+ *-----------------------------------------------------------------------------*/
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Overloaded Metal constructor initializes metal material albedo
+ *
+ * @param a		- Albedo
+ */
+/* ------------------------------------------------------------------------------------*/
+Metal::Metal(color const &a)
+	: albedo{a} {
+}
+
+bool Metal::scatter(const Ray &r_in, const hit_record &rec, color &attenuation, Ray &scattered) const {
+	Vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal) ;
+	scattered = Ray(rec.p, reflected) ;
+	attenuation = albedo ;
+	return (dot(scattered.direction(), rec.normal) > 0) ;
 }

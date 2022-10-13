@@ -2,7 +2,7 @@
  * @file main.cpp
  * @brief main program
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.2
+ * @version 0.0.3
  * @date 2022-10-02
  */
 #include "rtweekend.hpp"
@@ -10,6 +10,7 @@
 #include "Camera.hpp"
 #include "color.hpp"
 #include "Hittable_List.hpp"
+#include "Material.hpp"
 #include "Sphere.hpp"
 
 #include <iostream>
@@ -90,9 +91,12 @@ static color ray_color(Ray const &r, Hittable const &world, int depth) {
 	}
 
 	if (world.hit(r, 0.001, infinity, rec)) {
-		// Add dithering to the target
-		point3 target = rec.p + rec.normal + random_in_hemisphere(rec.normal) ;
-		return 0.5 * ray_color(Ray(rec.p, target - rec.p), world, depth-1) ;
+		Ray scattered ;
+		color attenuation ;
+		if (rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+			return attenuation * ray_color(scattered, world, depth-1 ;)
+		}
+		return color(0, 0, 0) ;
 	}
 
 	Vec3 unit_direction = unit_vector(r.direction()) ;

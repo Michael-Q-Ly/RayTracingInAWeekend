@@ -277,4 +277,19 @@ inline Vec3 random_in_hemisphere(Vec3 const &normal) {
 	}
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- How light gets reflected; V + 2B, where the length of b is
+ *			  V dot n; since V points in, we need a minus sign
+ *
+ * @param v		- Incident ray
+ * @param n		- Unit vector
+ *
+ * @return Vec3		- Ray that has been reflected off material of object
+ */
+/* ------------------------------------------------------------------------------------*/
+inline Vec3 reflect(Vec3 const &v, Vec3 const &n) {
+	return v - 2*dot(v, n)*n ;
+}
+
 #endif /* _VEC3_HPP_ */
