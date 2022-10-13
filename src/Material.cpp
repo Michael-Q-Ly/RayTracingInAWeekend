@@ -35,6 +35,12 @@ Lambertian::Lambertian(color const &a)
 /* ------------------------------------------------------------------------------------*/
 bool Lambertian::scatter(Ray const &r_in, hit_record const &rec, color &attenuation, Ray &scattered) const {
 	auto scatter_direction = rec.normal + random_unit_vector() ;
+
+	// Catch degenerate scatter direction
+	if (scatter_direction.near_zero()) {
+		scatter_direction = rec.normal ;
+	}
+
 	scattered = Ray(rec.p, scatter_direction) ;
 	attenuation = albedo ;
 	return true ;

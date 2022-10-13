@@ -34,6 +34,7 @@ class Vec3 {
                 double length(void) const ;				///< Gets Vec3 length
                 double length_squared(void) const ;			///< Gets Vec3 squared length
 
+		bool near_zero(void) const ;				///< Checks if a vector is very close to zero in all dimensions
 
 		/*-----------------------------------------------------------------------------
 		 * Inline class functions 
@@ -258,8 +259,8 @@ inline Vec3 random_unit_vector(void) {
 /* ----------------------------------------------------------------------------*/
 /**
  * @brief		- Gets random vector in hemisphere to have a uniform scatter direction
- *			\for all angles away from the hit point, with no dependence on the angle
- *			\from the normal
+ *			  for all angles away from the hit point, with no dependence on the angle
+ *			  from the normal
  *
  * @param normal	- Surface normal of sphere
  *

@@ -165,3 +165,15 @@ double Vec3::length(void) const {
 double Vec3::length_squared(void) const {
         return (e[0] * e[0] + e[1] * e[1] + e[2] * e[2]) ;
 }
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Checks if the vector is close to zero in all directions
+ *
+ * @return bool		- True if vector is close to zero in all directions
+ */
+/* ------------------------------------------------------------------------------------*/
+bool Vec3::near_zero(void) const {
+	auto const s = 1e-8 ;
+	return (fabs(e[0]) < s) && (fabs(e[1]) < s) &&  (fabs(e[2]) < s) ;
+}
