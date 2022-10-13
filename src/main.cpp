@@ -2,7 +2,7 @@
  * @file main.cpp
  * @brief main program
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.3
+ * @version 0.0.4
  * @date 2022-10-02
  */
 #include "rtweekend.hpp"
@@ -32,8 +32,16 @@ int main(int argc, char *argv[]) {
 	 * World 
 	 *-----------------------------------------------------------------------------*/
 	Hittable_List world ;
-	world.add(std::make_shared<Sphere>(point3(0, 0, -1), 0.5)) ;
-	world.add(std::make_shared<Sphere>(point3(0, -100.5, -1), 100)) ;
+
+	auto material_ground = std::make_shared<Lambertian>(color(0.8, 0.8, 0.0)) ;
+	auto material_center = std::make_shared<Lambertian>(color(0.7, 0.3, 0.3)) ;
+	auto material_left   = std::make_shared<Metal>(color(0.8, 0.8, 0.8)) ;
+	auto material_right  = std::make_shared<Metal>(color(0.8, 0.6, 0.2)) ;
+
+	world.add(std::make_shared<Sphere>(point3( 0.0, -100.5, -1.0), 100.0, material_ground)) ;
+	world.add(std::make_shared<Sphere>(point3( 0.0,    0.0, -1.0),   0.5, material_center)) ;
+	world.add(std::make_shared<Sphere>(point3(-1.0,    0.0, -1.0),   0.5, material_left)) ;
+	world.add(std::make_shared<Sphere>(point3( 1.0,    0.0, -1.0),   0.5, material_right)) ;
 
 	/*-----------------------------------------------------------------------------
 	 * Camera 
@@ -94,7 +102,7 @@ static color ray_color(Ray const &r, Hittable const &world, int depth) {
 		Ray scattered ;
 		color attenuation ;
 		if (rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
-			return attenuation * ray_color(scattered, world, depth-1 ;)
+			return attenuation * ray_color(scattered, world, depth-1) ;
 		}
 		return color(0, 0, 0) ;
 	}
