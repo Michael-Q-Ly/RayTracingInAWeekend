@@ -1,6 +1,6 @@
 /**
  * @file Sphere.cpp
- * @Brief Sphere class definition
+ * @brief Sphere class definition
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -9,10 +9,10 @@
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded Sphere constructor inits center and radius
+ * @brief		- Overloaded Sphere constructor inits center and radius
  *
- * @Param cen		- Center of Sphere obj
- * @Param r		- Radius of Sphere obj
+ * @param cen		- Center of Sphere obj
+ * @param r		- Radius of Sphere obj
  */
 /* ------------------------------------------------------------------------------------*/
 Sphere::Sphere(point3 cen, double r, std::shared_ptr<Material> m)
@@ -21,14 +21,14 @@ Sphere::Sphere(point3 cen, double r, std::shared_ptr<Material> m)
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Determines if Ray hits Sphere
+ * @brief		- Determines if Ray hits Sphere
  *
- * @Param r		- Radius
- * @Param t_min		- Min t val
- * @Param t_max		- Max t val
- * @Param rec		- Hit record
+ * @param r		- Radius
+ * @param t_min		- Min t val
+ * @param t_max		- Max t val
+ * @param rec		- Hit record
  *
- * @Returns bool	- Does the sphere get hit or not?
+ * @returns bool	- Does the sphere get hit or not?
  */
 /* ------------------------------------------------------------------------------------*/
 bool Sphere::hit(Ray const &r, double t_min, double t_max, hit_record &rec) const {

@@ -1,6 +1,6 @@
 /**
  * @file Ray.hpp
- * @Brief Ray Class declarations
+ * @brief Ray Class declarations
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-03

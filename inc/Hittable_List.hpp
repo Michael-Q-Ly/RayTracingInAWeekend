@@ -1,6 +1,6 @@
 /**
  * @file Hittable_List.hpp
- * @Brief Hittable List class header
+ * @brief Hittable List class header
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -12,6 +12,11 @@
 #include <memory>
 #include <vector>
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- A list of hittable objects (shared pointers)
+ */
+/* ------------------------------------------------------------------------------------*/
 class Hittable_List : public Hittable {
 	public:
 		Hittable_List(void) = default ;					///< No-args constructor

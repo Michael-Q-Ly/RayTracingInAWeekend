@@ -1,6 +1,6 @@
 /**
  * @file color.cpp
- * @Brief Color utility definitions
+ * @brief Color utility definitions
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.1
  * @date 2022-10-02
@@ -10,10 +10,10 @@
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief			- Writes color to output stream
+ * @brief			- Writes color to output stream
  *
- * @Param out			- The output steam
- * @Param pixel_color		- The pixel color to be outputted
+ * @param out			- The output steam
+ * @param pixel_color		- The pixel color to be outputted
  */
 /* ------------------------------------------------------------------------------------*/
 void write_color(std::ostream &out, color pixel_color, int samples_per_pixel) {

@@ -1,6 +1,6 @@
 /**
  * @file Vec3.hpp
- * @Brief Vec3 class
+ * @brief Vec3 class
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-02
@@ -41,9 +41,9 @@ class Vec3 {
 
 		/* ----------------------------------------------------------------------------*/
 		/**
-		 * @Brief		- Create a Vec3 object with random element values
+		 * @brief		- Create a Vec3 object with random element values
 		 *
-		 * @Returns Vec3	- Vec3 object with randomized elements
+		 * @returns Vec3	- Vec3 object with randomized elements
 		 */
 		/* ------------------------------------------------------------------------------------*/
 		inline static Vec3 random(void) {
@@ -52,12 +52,12 @@ class Vec3 {
 
 		/* ----------------------------------------------------------------------------*/
 		/**
-		 * @Brief		- Creates a Vec3 object with random elements in a range
+		 * @brief		- Creates a Vec3 object with random elements in a range
 		 *
-		 * @Param min		- Min random number
-		 * @Param max		- Max random number
+		 * @param min		- Min random number
+		 * @param max		- Max random number
 		 *
-		 * @Returns Vec3	- Vec3 object with randomized elements clustered together in range
+		 * @returns Vec3	- Vec3 object with randomized elements clustered together in range
 		 */
 		/* ------------------------------------------------------------------------------------*/
 		inline static Vec3 random(double min, double max) {
@@ -79,12 +79,12 @@ using color  = Vec3 ;							///< RGB color
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline output stream with Vec3 arg
+ * @brief		- Overloaded inline output stream with Vec3 arg
  *
- * @Param out		- Reference to output stream
- * @Param v		- Vec3 object
+ * @param out		- Reference to output stream
+ * @param v		- Vec3 object
  *
- * @Returns out		- The vector elements
+ * @returns out		- The vector elements
  */
 /* ------------------------------------------------------------------------------------*/
 inline std::ostream &operator<<(std::ostream &out, Vec3 const &v) {
@@ -93,12 +93,12 @@ inline std::ostream &operator<<(std::ostream &out, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline + operator with Vec3 args
+ * @brief		- Overloaded inline + operator with Vec3 args
  *
- * @Param u		- First vector
- * @Param v		- Second vector
+ * @param u		- First vector
+ * @param v		- Second vector
  *
- * @Returns Vec3	- Vec3 object scaled with sum of two vectors
+ * @returns Vec3	- Vec3 object scaled with sum of two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator+(Vec3 const &u, Vec3 const &v) {
@@ -107,12 +107,12 @@ inline Vec3 operator+(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline - operator with Vec3 args
+ * @brief		- Overloaded inline - operator with Vec3 args
  *
- * @Param u		- First vector
- * @Param v		- Second vector
+ * @param u		- First vector
+ * @param v		- Second vector
  *
- * @Returns Vec3	- Vec3 object initialized with the difference of the two vectors
+ * @returns Vec3	- Vec3 object initialized with the difference of the two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator-(Vec3 const &u, Vec3 const &v) {
@@ -121,12 +121,12 @@ inline Vec3 operator-(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline * operator with two Vec3 args
+ * @brief		- Overloaded inline * operator with two Vec3 args
  *
- * @Param u		- The unit vector
- * @Param v		- The vector
+ * @param u		- The unit vector
+ * @param v		- The vector
  *
- * @Returns Vec3	- Vec3 object initialized with product of each element
+ * @returns Vec3	- Vec3 object initialized with product of each element
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator*(Vec3 const &u, Vec3 const &v) {
@@ -135,12 +135,12 @@ inline Vec3 operator*(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline * operator with one double and one Vec3 arg
+ * @brief		- Overloaded inline * operator with one double and one Vec3 arg
  *
- * @Param t		- Time
- * @Param v		- The vector
+ * @param t		- Time
+ * @param v		- The vector
  *
- * @Returns Vec3	- Vec3 object with scaled vector elements
+ * @returns Vec3	- Vec3 object with scaled vector elements
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator*(double t, Vec3 const &v) {
@@ -149,12 +149,12 @@ inline Vec3 operator*(double t, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline * operator with one Vec3 arg and one double 
+ * @brief		- Overloaded inline * operator with one Vec3 arg and one double 
  *
- * @Param v		- The vector
- * @Param t		- Time
+ * @param v		- The vector
+ * @param t		- Time
  *
- * @Returns Vec3	- Vec3 object initialized with t scaling factor
+ * @returns Vec3	- Vec3 object initialized with t scaling factor
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator*(Vec3 const &v, double t) {
@@ -163,12 +163,12 @@ inline Vec3 operator*(Vec3 const &v, double t) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Overloaded inline / operator with one Vec3 arg and one double 
+ * @brief		- Overloaded inline / operator with one Vec3 arg and one double 
  *
- * @Param v		- The vector
- * @Param t		- Time
+ * @param v		- The vector
+ * @param t		- Time
  *
- * @Returns Vec3	- Vec3 object scaled by 1/t
+ * @returns Vec3	- Vec3 object scaled by 1/t
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 operator/(Vec3 v, double t) {
@@ -177,12 +177,12 @@ inline Vec3 operator/(Vec3 v, double t) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Dot product of two Vec3 objects
+ * @brief		- Dot product of two Vec3 objects
  *
- * @Param u		- First vector
- * @Param v		- Second vector
+ * @param u		- First vector
+ * @param v		- Second vector
  *
- * @Returns Vec3	- The dot product of the two vectors
+ * @returns Vec3	- The dot product of the two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline double dot(Vec3 const &u, Vec3 const &v) {
@@ -195,12 +195,12 @@ inline double dot(Vec3 const &u, Vec3 const &v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Cross product of two Vec3 objects
+ * @brief		- Cross product of two Vec3 objects
  *
- * @Param u		- First vector
- * @Param v		- Second vector
+ * @param u		- First vector
+ * @param v		- Second vector
  *
- * @Returns		- The cross product of the two vectors
+ * @returns		- The cross product of the two vectors
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 cross(Vec3 const &u, Vec3 const &v) {
@@ -214,11 +214,11 @@ inline Vec3 cross(Vec3 const &u, Vec3 const &v) {
 }
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Gets unit vector of Vec3 object
+ * @brief		- Gets unit vector of Vec3 object
  *
- * @Param v		- The vector
+ * @param v		- The vector
  *
- * @Returns		- The unit vector of the Vec3 object
+ * @returns		- The unit vector of the Vec3 object
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 unit_vector(Vec3 v) {
@@ -227,10 +227,10 @@ inline Vec3 unit_vector(Vec3 v) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Rejects points outside of an external unit sphere that determines
+ * @brief		- Rejects points outside of an external unit sphere that determines
  *			\how light bounces off a sphere of diffuse material
  *
- * @Returns Vec3	- Light ray inside the unit sphere outside and tangent to actual sphere
+ * @returns Vec3	- Light ray inside the unit sphere outside and tangent to actual sphere
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 random_in_unit_sphere(void) {
@@ -246,9 +246,9 @@ inline Vec3 random_in_unit_sphere(void) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Gets unit vector of random_in_unit_sphere; drop-in replacement
+ * @brief		- Gets unit vector of random_in_unit_sphere; drop-in replacement
  *
- * @Returns Vec3	- Unit vector of random_in_unit_sphere
+ * @returns Vec3	- Unit vector of random_in_unit_sphere
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 random_unit_vector(void) {
@@ -257,13 +257,13 @@ inline Vec3 random_unit_vector(void) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Gets random vector in hemisphere to have a uniform scatter direction
+ * @brief		- Gets random vector in hemisphere to have a uniform scatter direction
  *			\for all angles away from the hit point, with no dependence on the angle
  *			\from the normal
  *
- * @Param normal	- Surface normal of sphere
+ * @param normal	- Surface normal of sphere
  *
- * @Returns Vec3	- Scatter direction from hemisphere
+ * @returns Vec3	- Scatter direction from hemisphere
  */
 /* ------------------------------------------------------------------------------------*/
 inline Vec3 random_in_hemisphere(Vec3 const &normal) {

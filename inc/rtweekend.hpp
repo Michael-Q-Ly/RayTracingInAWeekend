@@ -1,6 +1,6 @@
 /**
  * @file rtweekend.hpp
- * @Brief Ray Tracing in One Weekend header
+ * @brief Ray Tracing in One Weekend header
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -28,11 +28,11 @@ double const pi       = 3.1415926535897932385 ;
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Convert degrees to radians
+ * @brief		- Convert degrees to radians
  *
- * @Param degrees	- Angle
+ * @param degrees	- Angle
  *
- * @Returns double	- Radian equivalant of angle
+ * @returns double	- Radian equivalant of angle
  */
 /* ------------------------------------------------------------------------------------*/
 inline double degrees_to_radians(double degrees) {
@@ -41,13 +41,13 @@ inline double degrees_to_radians(double degrees) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Clamps value x to range [min,max]
+ * @brief		- Clamps value x to range [min,max]
  *
- * @Param x		- Value to clamp
- * @Param min		- Min val
- * @Param max		- Max val
+ * @param x		- Value to clamp
+ * @param min		- Min val
+ * @param max		- Max val
  *
- * @Returns double	- Clamped value of number passed
+ * @returns double	- Clamped value of number passed
  */
 /* ------------------------------------------------------------------------------------*/
 inline double clamp(double x, double min, double max) {
@@ -59,9 +59,9 @@ inline double clamp(double x, double min, double max) {
 #ifdef CSTDLIB
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- No-args randome double generator from cstdlib
+ * @brief		- No-args randome double generator from cstdlib
  *
- * @Returns 
+ * @returns 
  */
 /* ------------------------------------------------------------------------------------*/
 inline double random_double(void) {
@@ -72,9 +72,9 @@ inline double random_double(void) {
 #else
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Returns a random real in [0, 1)
+ * @brief		- Returns a random real in [0, 1)
  *
- * @Returns double	- Random double in [0, 1)
+ * @returns double	- Random double in [0, 1)
  */
 /* ------------------------------------------------------------------------------------*/
 inline double random_double(void) {
@@ -84,12 +84,12 @@ inline double random_double(void) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Returns a random real in [min, max] (overloaded)
+ * @brief		- Returns a random real in [min, max] (overloaded)
  *
- * @Param min		- Min number boundary
- * @Param max		- Max number bounder
+ * @param min		- Min number boundary
+ * @param max		- Max number bounder
  *
- * @Returns double	- Scaled random number between a range
+ * @returns double	- Scaled random number between a range
  */
 /* ------------------------------------------------------------------------------------*/
 inline double random_double(double min, double max) {

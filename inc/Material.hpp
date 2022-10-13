@@ -1,6 +1,6 @@
 /**
  * @file Material.hpp
- * @Brief Material abstract class
+ * @brief Material abstract class
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-11
@@ -12,12 +12,35 @@
 #include "Ray.hpp"
 
 struct hit_record ;
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Abstract class for material of an object in R3
+ */
+/* ------------------------------------------------------------------------------------*/
 class Material {
 	public:
 		virtual bool scatter(
 				Ray const &r_in, hit_record const &rec, color &attenuation, Ray &scattered
 		) const = 0 ;
 		virtual ~Material(void) = default ;
+} ;
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Lambertian Material class inherited from Material class
+ */
+/* ------------------------------------------------------------------------------------*/
+class Lambertian : public Material {
+	public:
+		Lambertian(color const &a) ;										///< Overloaded Lambertian constructor
+
+		virtual bool scatter(											///< Overloaded scatter function to determine light scatter on material
+				Ray const &r_in, hit_record const &rec, color &attenuation, Ray &scattered
+				) const override ;
+
+	public:
+		color albedo ;												///< The portion of incident light or radiation that is reflected by a surface
 } ;
 
 #endif /* _MATERIAL_HPP_ */

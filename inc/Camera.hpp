@@ -1,6 +1,6 @@
 /**
  * @file Camera.hpp
- * @Brief Camera class header
+ * @brief Camera class header
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -10,6 +10,12 @@
 #include "rtweekend.hpp"
 #include "Ray.hpp"
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Camera object that gets a ray back from a projection in R3 made
+ *			  from a ray
+ */
+/* ------------------------------------------------------------------------------------*/
 class Camera {
 	public:
 		Camera(void) ;				///< No-args constructor

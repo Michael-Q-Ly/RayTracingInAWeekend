@@ -1,6 +1,6 @@
 /**
  * @file Camera.cpp
- * @Brief Camera class definitions
+ * @brief Camera class definitions
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -9,8 +9,8 @@
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- No-args Camera constructor
- * @Notes		- Sets aspect ratio, viewport hieght, width, and focal length
+ * @brief		- No-args Camera constructor
+ * @notes		- Sets aspect ratio, viewport hieght, width, and focal length
  *			- Also sets origin, horizontal, vertical, and lower left corner
  */
 /* ------------------------------------------------------------------------------------*/
@@ -28,12 +28,12 @@ Camera::Camera(void) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Gets Camera object ray
+ * @brief		- Gets Camera object ray
  *
- * @Param u		- Horizontal vector
- * @Param v		- Vertical vector
+ * @param u		- Horizontal vector
+ * @param v		- Vertical vector
  *
- * @Returns Ray		- Ray projecting out of Camera object
+ * @returns Ray		- Ray projecting out of Camera object
  */
 /* ------------------------------------------------------------------------------------*/
 Ray Camera::get_ray(double u, double v) {

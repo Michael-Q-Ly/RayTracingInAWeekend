@@ -1,6 +1,6 @@
 /**
 r* @file Hittable.hpp
- * @Brief Abstract class for hit function
+ * @brief Abstract class for hit function
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -14,9 +14,9 @@ class Material ;						///< Material class forward declaration to let Hittable cl
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- A struct containing a hit record of an object's position
- *			\in 3D space, its surface normal, the material it is, and if
- *			\the object's ray is front-facing or not
+ * @brief		- A struct containing a hit record of an object's position
+ *			  in 3D space, its surface normal, the material it is, and if
+ *			  the object's ray is front-facing or not
  */
 /* ------------------------------------------------------------------------------------*/
 struct hit_record {
@@ -29,12 +29,12 @@ struct hit_record {
 
 	/* ----------------------------------------------------------------------------*/
 	/**
-	 * @Brief			- Determine if the normal should point inwards or outwards to or out from the surface
+	 * @brief			- Determine if the normal should point inwards or outwards to or out from the surface
 	 *
-	 * @Param r			- Radius
-	 * @Param outward_normal	- Vec3 object pointing in or out of shape
+	 * @param r			- Radius
+	 * @param outward_normal	- Vec3 object pointing in or out of shape
 	 *
-	 * @Notes			- Is the ray coming from inside or from outside?
+	 * @note			- Is the ray coming from inside or from outside?
 	 */
 	/* ------------------------------------------------------------------------------------*/
 	inline void set_face_normal(Ray const &r, Vec3 const &outward_normal) {
@@ -45,8 +45,8 @@ struct hit_record {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Hittable abstract class that determines if an object gets hit by a light ray
- *			\from a diffuse light source
+ * @brief		- Hittable abstract class that determines if an object gets hit by a light ray
+ *			  from a diffuse light source
  */
 /* ------------------------------------------------------------------------------------*/
 class Hittable {

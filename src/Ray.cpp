@@ -1,6 +1,6 @@
 /**
  * @file Ray.cpp
- * @Brief Ray Class method definitions
+ * @brief Ray Class method definitions
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-03
@@ -9,17 +9,17 @@
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Ray constructor
+ * @brief		- Ray constructor
  */
 /* ------------------------------------------------------------------------------------*/
 Ray::Ray(void) = default ;
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Ray overloaded constructor
+ * @brief		- Ray overloaded constructor
  *
- * @Param origin	- Origin of ray
- * @Param direction	- Direction ray is pointing
+ * @param origin	- Origin of ray
+ * @param direction	- Direction ray is pointing
  */
 /* ------------------------------------------------------------------------------------*/
 Ray::Ray(point3 const &origin, Vec3 const &direction)
@@ -28,9 +28,9 @@ Ray::Ray(point3 const &origin, Vec3 const &direction)
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Gets origin of Ray object
+ * @brief		- Gets origin of Ray object
  *
- * @Returns point3	- Origin of ray
+ * @returns point3	- Origin of ray
  */
 /* ------------------------------------------------------------------------------------*/
 point3 Ray::origin(void) const {
@@ -39,9 +39,9 @@ point3 Ray::origin(void) const {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Gets direction of Ray object
+ * @brief		- Gets direction of Ray object
  *
- * @Returns Vec3	- Direction Ray object is pointing
+ * @returns Vec3	- Direction Ray object is pointing
  */
 /* ------------------------------------------------------------------------------------*/
 Vec3 Ray::direction(void) const {
@@ -50,11 +50,11 @@ Vec3 Ray::direction(void) const {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Location of vector point
+ * @brief		- Location of vector point
  *
- * @Param t		- Time
+ * @param t		- Time
  *
- * @Returns Ray		- Location ray is at
+ * @returns Ray		- Location ray is at
  */
 /* ------------------------------------------------------------------------------------*/
 point3 Ray::at(double t) const {

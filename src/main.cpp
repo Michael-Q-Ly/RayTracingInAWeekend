@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @Brief main program
+ * @brief main program
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.2
  * @date 2022-10-02
@@ -68,17 +68,17 @@ int main(int argc, char *argv[]) {
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Traces a color ray
+ * @brief		- Traces a color ray
  *
- * @Param r		- The color ray
+ * @param r		- The color ray
  *
- * @Returns color	- Returns a color (Vec3 obj)
+ * @returns color	- Returns a color (Vec3 obj)
  *
- * @Notes		- 1. Calculates ray from cam eye to pixel
- *			\2. Determines which objects the ray intersects
- *			\3. Computes a color for that intersection point
- *			\We need to ignore hits very close to zero and use 0.001
- *			\to get ride of shadow acne problem
+ * @notes		- 1. Calculates ray from cam eye to pixel
+ *			  2. Determines which objects the ray intersects
+ *			  3. Computes a color for that intersection point
+ *			  We need to ignore hits very close to zero and use 0.001
+ *			  to get ride of shadow acne problem
  */
 /* ------------------------------------------------------------------------------------*/
 static color ray_color(Ray const &r, Hittable const &world, int depth) {

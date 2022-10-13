@@ -1,6 +1,6 @@
  /**
  * @file Sphere.hpp
- * @Brief Sphere class
+ * @brief Sphere class
  * @author Michael Ly (github.com/Michael-Q-Ly)
  * @version 0.0.0
  * @date 2022-10-05
@@ -13,7 +13,7 @@
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @Brief		- Hittable sphere in R3
+ * @brief		- Hittable sphere in R3
  */
 /* ------------------------------------------------------------------------------------*/
 class Sphere : public Hittable {
