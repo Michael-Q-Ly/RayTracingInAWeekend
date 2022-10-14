@@ -292,4 +292,26 @@ inline Vec3 reflect(Vec3 const &v, Vec3 const &n) {
 	return v - 2*dot(v, n)*n ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief			- Light refraction as described by Snell's Law:
+ *				  eta * sin_theta = eta' * sin_theta'
+ *
+ * @param uv			- Unit vector
+ * @param n			- Normal
+ * @param eatai_over_etat	- Ratio of refractive indicies between media 1 and media 2
+ *
+ * @return Vec3			- Refracted light ray
+ *
+ * @notes			- Let R' be the refracted light ray
+ *				  R' = R_perp' + R_para'
+ */
+/* ------------------------------------------------------------------------------------*/
+inline Vec3 refract(Vec3 const &uv, Vec3 const &n, double eatai_over_etat) {
+	auto cos_theta      = fmin(dot(-uv, n), 1.0) ;
+	Vec3 r_out_perp     = eatai_over_etat * (uv + cos_theta*n) ;
+	Vec3 r_out_parallel = -std::sqrt(fabs(1.0 -r_out_perp.length_squared())) * n ;
+	return r_out_perp + r_out_parallel ;
+}
+
 #endif /* _VEC3_HPP_ */

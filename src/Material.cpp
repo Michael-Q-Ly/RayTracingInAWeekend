@@ -2,7 +2,7 @@
  * @file Material.cpp
  * @brief 
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.1
+ * @version 0.0.2
  * @date 2022-10-11
  */
 #include "Material.hpp"
@@ -91,4 +91,45 @@ bool Metal::scatter(const Ray &r_in, const hit_record &rec, color &attenuation, 
 	scattered = Ray(rec.p, reflected + fuzz*random_in_unit_sphere()) ;
 	attenuation = albedo ;
 	return (dot(scattered.direction(), rec.normal) > 0) ;
+}
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------
+ * Dielectric 
+ *-----------------------------------------------------------------------------*/
+
+Dielectric::Dielectric(double index_of_refraction)
+	: ir{index_of_refraction} {
+}
+
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Describes how light scatters on a Dielectric object
+ *
+ * @param r_in		- Incident ray
+ * @param rec		- Record of rays hitting
+ * @param attenuation	- Light attenuation
+ * @param scattered	- How much light is scattered
+ *
+ * @return bool		- Does the light scatter when it hits, or is it absorbed?
+ */
+/* ------------------------------------------------------------------------------------*/
+bool Dielectric::scatter(Ray const &r_in, hit_record const &rec, color &attenuation, Ray &scattered) const {
+	attenuation             = color(1.0, 1.0, 1.0) ;
+	// Refraction ratio will be a inverse of the index of refraction if light ray hits from front of object
+	double refraction_ratio = rec.front_face ? (1.0/ir) : ir ;
+
+	Vec3 unit_direction = unit_vector(r_in.direction()) ;
+	Vec3 refracted      = refract(unit_direction, rec.normal, refraction_ratio) ;
+
+	scattered = Ray(rec.p, refracted) ;
+	return true ;
 }
