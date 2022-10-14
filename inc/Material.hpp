@@ -2,7 +2,7 @@
  * @file Material.hpp
  * @brief Material abstract class
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.0
+ * @version 0.0.1
  * @date 2022-10-11
  */
 #ifndef _MATERIAL_HPP_
@@ -43,15 +43,21 @@ class Lambertian : public Material {
 		color albedo ;												///< The portion of incident light or radiation that is reflected by a Lambertian surface
 } ;
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Metal Material class
+ */
+/* ------------------------------------------------------------------------------------*/
 class Metal : public Material {
 	public:
-		Metal(color const & a) ;
+		Metal(color const & a, double f) ;
 		virtual bool scatter(											///< Overridden scatter function for Metal material
 				Ray const &r_in, hit_record const &rec, color &attenuation, Ray &scattered
 		) const override ;
 
 	public:
 		color albedo ;												///< The portion of incident light or radiation that is reflected by a metal surface
+		double fuzz ;												///< Fuzziness of reflections
 } ;
 
 #endif /* _MATERIAL_HPP_ */

@@ -2,7 +2,7 @@
  * @file Material.cpp
  * @brief 
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.0
+ * @version 0.0.1
  * @date 2022-10-11
  */
 #include "Material.hpp"
@@ -69,13 +69,26 @@ bool Lambertian::scatter(Ray const &r_in, hit_record const &rec, color &attenuat
  * @param a		- Albedo
  */
 /* ------------------------------------------------------------------------------------*/
-Metal::Metal(color const &a)
-	: albedo{a} {
+Metal::Metal(color const &a, double f)
+	: albedo{a}, fuzz{(f < 1) ? f : 1} {
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief		- Describes how light scatters on a metal object
+ *
+ * @param r_in		- Incident ray
+ * @param rec		- Record of rays hitting
+ * @param attenuation	- Light attenuation
+ * @param scattered	- How much light is scattered
+ *
+ * @return bool		- Does the light scatter when it hits, or is it absorbed?
+ */
+/* ------------------------------------------------------------------------------------*/
 bool Metal::scatter(const Ray &r_in, const hit_record &rec, color &attenuation, Ray &scattered) const {
 	Vec3 reflected = reflect(unit_vector(r_in.direction()), rec.normal) ;
-	scattered = Ray(rec.p, reflected) ;
+	// Add dithering to reflected light with fuzz*random_in_unit_sphere (add noise to sphere reflection)
+	scattered = Ray(rec.p, reflected + fuzz*random_in_unit_sphere()) ;
 	attenuation = albedo ;
 	return (dot(scattered.direction(), rec.normal) > 0) ;
 }
