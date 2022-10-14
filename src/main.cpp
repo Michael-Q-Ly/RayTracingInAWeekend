@@ -2,7 +2,7 @@
  * @file main.cpp
  * @brief main program
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.6
+ * @version 0.0.7
  * @date 2022-10-02
  */
 #include "rtweekend.hpp"
@@ -41,6 +41,7 @@ int main(int argc, char *argv[]) {
 	world.add(std::make_shared<Sphere>(point3( 0.0, -100.5, -1.0), 100.0, material_ground)) ;
 	world.add(std::make_shared<Sphere>(point3( 0.0,    0.0, -1.0),   0.5, material_center)) ;
 	world.add(std::make_shared<Sphere>(point3(-1.0,    0.0, -1.0),   0.5, material_left)) ;
+	world.add(std::make_shared<Sphere>(point3(-1.0,    0.0, -1.0),  -0.4, material_left)) ;
 	world.add(std::make_shared<Sphere>(point3( 1.0,    0.0, -1.0),   0.5, material_right)) ;
 
 	/*-----------------------------------------------------------------------------
