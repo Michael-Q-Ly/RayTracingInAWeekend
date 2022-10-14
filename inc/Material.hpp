@@ -2,7 +2,7 @@
  * @file Material.hpp
  * @brief Material abstract class
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.2
+ * @version 0.0.3
  * @date 2022-10-11
  */
 #ifndef _MATERIAL_HPP_
@@ -73,7 +73,7 @@ class Dielectric : public Material {
 		virtual bool scatter(											///< Overridden scatter function for Dielectric Material
 				Ray const &r_in, hit_record const &rec, color &attenuation, Ray &scattered
 		) const override ;
-		virtual ~Dielectric(void) = default ;
+		virtual ~Dielectric(void) = default ;									///< No-args Dielectric destructor
 
 	public:
 		double ir ;												///< Index of refraction of Dielectric object

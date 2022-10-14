@@ -2,7 +2,7 @@
  * @file Material.cpp
  * @brief 
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.2
+ * @version 0.0.3
  * @date 2022-10-11
  */
 #include "Material.hpp"
@@ -128,8 +128,20 @@ bool Dielectric::scatter(Ray const &r_in, hit_record const &rec, color &attenuat
 	double refraction_ratio = rec.front_face ? (1.0/ir) : ir ;
 
 	Vec3 unit_direction = unit_vector(r_in.direction()) ;
-	Vec3 refracted      = refract(unit_direction, rec.normal, refraction_ratio) ;
+	double cos_theta = fmin(dot(-unit_direction, rec.normal), 1.0) ;
+	double sin_theta = std::sqrt(1.0 - cos_theta*cos_theta) ;
 
-	scattered = Ray(rec.p, refracted) ;
+	bool cannot_refract = (refraction_ratio * sin_theta) > 1.0 ;
+	Vec3 direction ;
+
+	if (cannot_refract) {
+		direction = reflect(unit_direction, rec.normal) ;
+	}
+	else {
+		direction = refract(unit_direction, rec.normal, refraction_ratio) ;
+	}
+
+
+	scattered = Ray(rec.p, direction) ;
 	return true ;
 }
