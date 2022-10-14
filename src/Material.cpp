@@ -2,7 +2,7 @@
  * @file Material.cpp
  * @brief 
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.3
+ * @version 0.0.4
  * @date 2022-10-11
  */
 #include "Material.hpp"

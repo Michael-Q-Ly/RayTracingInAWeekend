@@ -2,7 +2,7 @@
  * @file Material.hpp
  * @brief Material abstract class
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.3
+ * @version 0.0.4
  * @date 2022-10-11
  */
 #ifndef _MATERIAL_HPP_
@@ -77,6 +77,23 @@ class Dielectric : public Material {
 
 	public:
 		double ir ;												///< Index of refraction of Dielectric object
+	private:
+		/* ----------------------------------------------------------------------------*/
+		/**
+		 * @brief		- Gets reflectance of Dielectric object with Schlick Approximation
+		 *
+		 * @param cosine	- The cosine of an angle
+		 * @param ref_idx	- Refractive Index
+		 *
+		 * @return double	- The reflectance of the dielectric material
+		 */
+		/* ------------------------------------------------------------------------------------*/
+		static double reflectance(double cosine, double ref_idx) {
+			auto r0 = (1-ref_idx) / (1+ref_idx) ;
+			r0 = r0*r0 ;
+			return r0 + (1-r0)*std::pow((1-cosine), 5) ;
+		}
 } ;
+
 
 #endif /* _MATERIAL_HPP_ */
