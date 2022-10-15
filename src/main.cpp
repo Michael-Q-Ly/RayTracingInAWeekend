@@ -2,7 +2,7 @@
  * @file main.cpp
  * @brief main program
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.8
+ * @version 0.0.9
  * @date 2022-10-02
  */
 #include "rtweekend.hpp"
@@ -47,7 +47,16 @@ int main(int argc, char *argv[]) {
 	/*-----------------------------------------------------------------------------
 	 * Camera 
 	 *-----------------------------------------------------------------------------*/
-	Camera cam(point3(-2, 2, 1), point3(0, 0, -1), Vec3(0, 1, 0), 90.0, aspect_ratio) ;
+	// Create a point to look at an image from a certain height
+	point3 look_from(3, 3, 2) ;
+	point3 look_at(0, 0, -1) ;
+	Vec3 v_up(0, 1, 0) ;
+	// The distance from projection point and the plane where everything is in focus is the focus distance (focal length)
+	auto dist_to_focus = (look_from-look_at).length() ;
+	// Aperture is a hole to control how big the lens is effectively. The bigger the aperture, the more light comes in and the more defoucs blur we get
+	auto aperture = 2.0 ;
+
+	Camera cam(look_from, look_at, v_up, 20, aspect_ratio, aperture, dist_to_focus) ;
 
 	/*-----------------------------------------------------------------------------
 	 * Render 

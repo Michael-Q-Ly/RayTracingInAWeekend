@@ -314,4 +314,21 @@ inline Vec3 refract(Vec3 const &uv, Vec3 const &n, double eatai_over_etat) {
 	return r_out_perp + r_out_parallel ;
 }
 
+/* ----------------------------------------------------------------------------*/
+/**
+ * @brief			- Generates a random point inside a unit disk
+ *
+ * @return Vec3			- Random point in unit disk
+ */
+/* ------------------------------------------------------------------------------------*/
+inline Vec3 random_in_unit_disk(void) {
+	while (true) {
+		auto p = Vec3(random_double(-1, 1), random_double(-1, 1), 0) ;
+		if (p.length_squared() >= 1) {
+			continue ;
+		}
+		return p ;
+	}
+}
+
 #endif /* _VEC3_HPP_ */
