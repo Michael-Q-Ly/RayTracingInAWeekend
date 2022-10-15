@@ -2,7 +2,7 @@
  * @file Camera.hpp
  * @brief Camera class header
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.1
+ * @version 0.0.2
  * @date 2022-10-05
  */
 #ifndef _CAMERA_HPP_
@@ -18,8 +18,8 @@
 /* ------------------------------------------------------------------------------------*/
 class Camera {
 	public:
-		Camera(double vfov, double aspect_ratio) ;	///< Camera constructor with vertical field of view and aspect ratio
-		Ray get_ray(double u, double v) ;		///< Gets Ray object
+		Camera(point3 look_from, point3 look_at, Vec3 v_up, double v_fov, double aspect_ratio) ;	///< Overloaded Camera constructor with positioning and orientation arguments
+		Ray get_ray(double s, double t) ;		///< Gets Ray object
 
 	private:
 		point3 origin ;					///< Origin of Camera object

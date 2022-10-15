@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	 * Image 
 	 *-----------------------------------------------------------------------------*/
 	auto const aspect_ratio     = 16.0 / 9.0 ;
-	int const image_width       = 50 ;
+	int const image_width       = 2560 ;
 	int const image_height      = static_cast<int>(image_width/aspect_ratio) ;
 	int const samples_per_pixel = 100 ;
 	int const max_depth         = 50 ;
@@ -31,20 +31,23 @@ int main(int argc, char *argv[]) {
 	/*-----------------------------------------------------------------------------
 	 * World 
 	 *-----------------------------------------------------------------------------*/
-	auto R = std::cos(pi/4) ;
 	Hittable_List world ;
 
-	// Blue and red spheres touching
-	auto material_left  = std::make_shared<Lambertian>(color(0, 0, 1)) ;
-	auto material_right = std::make_shared<Lambertian>(color(1, 0, 0)) ;
+	auto material_ground = std::make_shared<Lambertian>(color(0.8, 0.8, 0.0)) ;
+	auto material_center = std::make_shared<Lambertian>(color(0.1, 0.2, 0.5)) ;
+	auto material_left   = std::make_shared<Dielectric>(1.5) ;
+	auto material_right  = std::make_shared<Metal>(color(0.8, 0.6, 0.2), 0.0) ;
 
-	world.add(std::make_shared<Sphere>(point3(-R, 0, -1), R, material_left)) ;
-	world.add(std::make_shared<Sphere>(point3( R, 0, -1), R, material_right)) ;
+	world.add(std::make_shared<Sphere>(point3( 0.0, -100.5, -1.0 ), 100.0,  material_ground)) ;
+	world.add(std::make_shared<Sphere>(point3( 0.0,    0.0, -1.0 ),   0.5,  material_center)) ;
+	world.add(std::make_shared<Sphere>(point3(-1.0,    0.0, -1.0 ),   0.5,  material_left)) ;
+	world.add(std::make_shared<Sphere>(point3(-1.0,    0.0, -1.0 ),  -0.45, material_left)) ;
+	world.add(std::make_shared<Sphere>(point3( 1.0,    0.0, -1.0 ),   0.5,  material_right)) ;
 
 	/*-----------------------------------------------------------------------------
 	 * Camera 
 	 *-----------------------------------------------------------------------------*/
-	Camera cam(90.0, aspect_ratio) ;
+	Camera cam(point3(-2, 2, 1), point3(0, 0, -1), Vec3(0, 1, 0), 90.0, aspect_ratio) ;
 
 	/*-----------------------------------------------------------------------------
 	 * Render 
