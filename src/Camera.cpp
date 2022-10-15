@@ -2,22 +2,26 @@
  * @file Camera.cpp
  * @brief Camera class definitions
  * @author Michael Ly (github.com/Michael-Q-Ly)
- * @version 0.0.0
+ * @version 0.0.1
  * @date 2022-10-05
  */
 #include "Camera.hpp"
 
 /* ----------------------------------------------------------------------------*/
 /**
- * @brief		- No-args Camera constructor
- * @notes		- Sets aspect ratio, viewport hieght, width, and focal length
- *			- Also sets origin, horizontal, vertical, and lower left corner
+ * @brief			- Overloaded Camera constructor initializing vertical
+ *				  field of view and aspect ratio
+ *
+ * @param vfov			- Vertical field of view in degrees
+ * @param aspect_ratio		- Aspect ratio of Camera object
  */
 /* ------------------------------------------------------------------------------------*/
-Camera::Camera(void) {
-	auto aspect_ratio = 16.0/9.0 ;
-	auto viewport_height = 2.0 ;
+Camera::Camera(double vfov, double aspect_ratio) {
+	auto theta           = degrees_to_radians(vfov) ;
+	auto h               = std::tan(theta/2) ;	// Height of triangle formed from angle and z-axis
+	auto viewport_height = 2.0*h ;
 	auto viewport_width  = aspect_ratio * viewport_height ;
+
 	auto focal_length    = 1.0 ;
 
 	origin            = point3(0, 0, 0) ;
