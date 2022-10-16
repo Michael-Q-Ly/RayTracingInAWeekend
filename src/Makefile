@@ -32,7 +32,7 @@ build:
 
 .PHONY: run
 run:
-	./$(PROG) > $(IMAGE)
+	time ./$(PROG) > $(IMAGE)
 
 .PHONY: clean
 clean:
